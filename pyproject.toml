@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scopehunter"
+version = "0.1.0"
+description = "Technology-Aware Security Assessment Assistant for authorized web application testing"
+requires-python = ">=3.12"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "ScopeHunter Contributors" }]
+
+dependencies = [
+    "httpx[http2]>=0.27.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.2.0",
+    "click>=8.1.7",
+    "rich>=13.7.0",
+    "questionary>=2.0.1",
+    "pydantic>=2.7.0",
+    "anyio>=4.4.0",
+    "tenacity>=8.3.0",
+    "python-dotenv>=1.0.0",
+    "jinja2>=3.1.4",
+    "aiofiles>=23.2.1",
+    "packaging>=24.0",
+    "tldextract>=5.1.2",
+]
+
+[project.optional-dependencies]
+browser = ["playwright>=1.44.0"]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.7",
+    "pytest-httpx>=0.30.0",
+    "respx>=0.21.0",
+    "black>=24.4.2",
+    "ruff>=0.4.4",
+    "mypy>=1.10.0",
+]
+
+[project.scripts]
+scopehunter = "scopehunter.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["scopehunter*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
