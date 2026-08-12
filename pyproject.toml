@@ -48,7 +48,7 @@ where = ["."]
 include = ["scopehunter*"]
 
 [tool.setuptools.package-data]
-"*" = ["*.json"]
+"scopehunter.config" = ["*.json"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
