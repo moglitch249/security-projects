@@ -14,10 +14,10 @@ Does NOT make assumptions from a single signal.
 
 from __future__ import annotations
 
+import importlib.resources
 import json
 import logging
 import re
-from pathlib import Path
 from urllib.parse import urljoin
 
 from scopehunter.core.evidence import HttpEvidence, TechDetection
@@ -25,20 +25,19 @@ from scopehunter.core.http import HttpClient
 
 logger = logging.getLogger(__name__)
 
-_SIGNATURES_PATH = Path(__file__).parent.parent / "config" / "signatures.json"
-_CVE_PATH = Path(__file__).parent.parent / "config" / "cve_mappings.json"
-
 # Minimum confidence to include a technology in results
 _MIN_CONFIDENCE_THRESHOLD = 0.3
 
 
 def _load_signatures() -> dict:
-    with open(_SIGNATURES_PATH, encoding="utf-8") as f:
+    ref = importlib.resources.files("scopehunter.config") / "signatures.json"
+    with ref.open("r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def _load_cves() -> list[dict]:
-    with open(_CVE_PATH, encoding="utf-8") as f:
+    ref = importlib.resources.files("scopehunter.config") / "cve_mappings.json"
+    with ref.open("r", encoding="utf-8") as f:
         return json.load(f).get("cves", [])
 
 
