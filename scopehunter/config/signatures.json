@@ -1,0 +1,120 @@
+{
+  "technologies": {
+    "WordPress": {
+      "weight": 1.0,
+      "signals": [
+        { "type": "header", "name": "x-powered-by", "pattern": "WordPress", "score": 0.8 },
+        { "type": "header", "name": "link", "pattern": "rel=\\\"https://api\\.w\\.org", "score": 0.9 },
+        { "type": "cookie", "name": "wordpress_.*", "score": 0.9 },
+        { "type": "cookie", "name": "wp-settings-.*", "score": 0.9 },
+        { "type": "body", "pattern": "/wp-content/", "score": 0.9 },
+        { "type": "body", "pattern": "/wp-includes/", "score": 0.85 },
+        { "type": "body", "pattern": "wp-json", "score": 0.7 },
+        { "type": "body", "pattern": "<meta name=\"generator\" content=\"WordPress", "score": 0.95 },
+        { "type": "path_exists", "path": "/wp-login.php", "score": 0.9 },
+        { "type": "path_exists", "path": "/wp-admin/", "score": 0.85 },
+        { "type": "path_exists", "path": "/wp-json/wp/v2/", "score": 0.95 },
+        { "type": "body", "pattern": "data-wpml-", "score": 0.6 }
+      ]
+    },
+    "WooCommerce": {
+      "weight": 0.9,
+      "signals": [
+        { "type": "body", "pattern": "woocommerce", "score": 0.85 },
+        { "type": "cookie", "name": "woocommerce_.*", "score": 0.9 },
+        { "type": "cookie", "name": "wc_session_.*", "score": 0.95 },
+        { "type": "path_exists", "path": "/wp-json/wc/v3/", "score": 0.95 },
+        { "type": "body", "pattern": "wc-api", "score": 0.75 },
+        { "type": "body", "pattern": "/cart/", "score": 0.4 }
+      ]
+    },
+    "Laravel": {
+      "weight": 1.0,
+      "signals": [
+        { "type": "cookie", "name": "laravel_session", "score": 0.95 },
+        { "type": "cookie", "name": "XSRF-TOKEN", "score": 0.6 },
+        { "type": "header", "name": "x-powered-by", "pattern": "PHP", "score": 0.3 },
+        { "type": "body", "pattern": "laravel", "score": 0.7, "case_insensitive": true },
+        { "type": "body", "pattern": "Illuminate\\\\", "score": 0.9 },
+        { "type": "body", "pattern": "\"exception\":\"Illuminate", "score": 0.95 },
+        { "type": "path_exists", "path": "/api/user", "score": 0.5 },
+        { "type": "header", "name": "set-cookie", "pattern": "laravel_session", "score": 0.95 }
+      ]
+    },
+    "Django": {
+      "weight": 1.0,
+      "signals": [
+        { "type": "cookie", "name": "csrftoken", "score": 0.8 },
+        { "type": "cookie", "name": "sessionid", "score": 0.5 },
+        { "type": "header", "name": "x-frame-options", "pattern": "SAMEORIGIN", "score": 0.3 },
+        { "type": "body", "pattern": "Django", "score": 0.7 },
+        { "type": "body", "pattern": "django.core", "score": 0.95 },
+        { "type": "path_exists", "path": "/admin/", "score": 0.5 },
+        { "type": "path_exists", "path": "/admin/login/", "score": 0.7 },
+        { "type": "body", "pattern": "__admin_media_prefix__", "score": 0.9 },
+        { "type": "body", "pattern": "csrfmiddlewaretoken", "score": 0.75 }
+      ]
+    },
+    "Express.js": {
+      "weight": 0.9,
+      "signals": [
+        { "type": "header", "name": "x-powered-by", "pattern": "Express", "score": 0.95 },
+        { "type": "header", "name": "x-powered-by", "pattern": "Node.js", "score": 0.7 },
+        { "type": "body", "pattern": "Cannot GET", "score": 0.7 },
+        { "type": "body", "pattern": "Cannot POST", "score": 0.7 },
+        { "type": "header", "name": "etag", "pattern": "W/\"", "score": 0.3 }
+      ]
+    },
+    "Next.js": {
+      "weight": 1.0,
+      "signals": [
+        { "type": "header", "name": "x-powered-by", "pattern": "Next.js", "score": 0.98 },
+        { "type": "body", "pattern": "__NEXT_DATA__", "score": 0.95 },
+        { "type": "body", "pattern": "_next/static", "score": 0.9 },
+        { "type": "body", "pattern": "/_next/", "score": 0.85 },
+        { "type": "path_exists", "path": "/api/health", "score": 0.3 },
+        { "type": "body", "pattern": "next/dist", "score": 0.85 }
+      ]
+    },
+    "PHP": {
+      "weight": 0.7,
+      "signals": [
+        { "type": "header", "name": "x-powered-by", "pattern": "PHP/", "score": 0.95 },
+        { "type": "cookie", "name": "PHPSESSID", "score": 0.9 },
+        { "type": "header", "name": "set-cookie", "pattern": "PHPSESSID", "score": 0.9 }
+      ]
+    },
+    "Nginx": {
+      "weight": 0.6,
+      "signals": [
+        { "type": "header", "name": "server", "pattern": "nginx", "score": 0.95 }
+      ]
+    },
+    "Apache": {
+      "weight": 0.6,
+      "signals": [
+        { "type": "header", "name": "server", "pattern": "Apache", "score": 0.95 }
+      ]
+    },
+    "Cloudflare": {
+      "weight": 0.5,
+      "signals": [
+        { "type": "header", "name": "server", "pattern": "cloudflare", "score": 0.95 },
+        { "type": "header", "name": "cf-ray", "pattern": ".*", "score": 0.98 }
+      ]
+    }
+  },
+  "version_patterns": {
+    "WordPress": [
+      { "type": "body", "pattern": "<meta name=\"generator\" content=\"WordPress ([\\d.]+)\"", "group": 1 },
+      { "type": "path_response", "path": "/feed/", "pattern": "<generator>https://wordpress.org/\\?v=([\\d.]+)</generator>", "group": 1 },
+      { "type": "path_response", "path": "/wp-includes/css/dashicons.min.css", "pattern": "\\?ver=([\\d.]+)", "group": 1 }
+    ],
+    "PHP": [
+      { "type": "header", "name": "x-powered-by", "pattern": "PHP/([\\d.]+)", "group": 1 }
+    ],
+    "Nginx": [
+      { "type": "header", "name": "server", "pattern": "nginx/([\\d.]+)", "group": 1 }
+    ]
+  }
+}

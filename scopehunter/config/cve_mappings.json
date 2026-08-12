@@ -1,0 +1,76 @@
+{
+  "cves": [
+    {
+      "id": "CVE-2023-5561",
+      "component": "WordPress",
+      "affected_versions": "< 6.4.1",
+      "severity": "medium",
+      "description": "WordPress core username enumeration via REST API oEmbed response.",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2023-5561",
+      "safe_detection_hint": "Check /wp-json/oembed/1.0/proxy for user data exposure."
+    },
+    {
+      "id": "CVE-2022-21661",
+      "component": "WordPress",
+      "affected_versions": "< 5.8.3",
+      "severity": "high",
+      "description": "WordPress SQL injection via WP_Query due to improper sanitization.",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2022-21661",
+      "safe_detection_hint": "Version check only. Do not test SQL payloads."
+    },
+    {
+      "id": "CVE-2023-2745",
+      "component": "WordPress",
+      "affected_versions": "< 6.2.1",
+      "severity": "medium",
+      "description": "WordPress directory traversal via 'wp_lang' parameter.",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2023-2745",
+      "safe_detection_hint": "Version check only. Do not attempt traversal payloads."
+    },
+    {
+      "id": "CVE-2021-24145",
+      "component": "WordPress",
+      "affected_versions": "<= 5.6",
+      "severity": "medium",
+      "description": "WordPress CSRF token bypass leading to stored XSS.",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2021-24145",
+      "safe_detection_hint": "Version check only."
+    },
+    {
+      "id": "CVE-2023-3460",
+      "component": "Ultimate Member (WordPress Plugin)",
+      "affected_versions": "<= 2.6.6",
+      "severity": "critical",
+      "description": "Unauthenticated privilege escalation via user meta update.",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2023-3460",
+      "safe_detection_hint": "Check if Ultimate Member plugin is installed via /wp-content/plugins/ultimate-member/."
+    },
+    {
+      "id": "CVE-2023-30777",
+      "component": "Advanced Custom Fields (WordPress Plugin)",
+      "affected_versions": "< 6.1.6",
+      "severity": "high",
+      "description": "Reflected XSS in the ACF plugin admin pages.",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2023-30777",
+      "safe_detection_hint": "Detect plugin presence at /wp-content/plugins/advanced-custom-fields/."
+    },
+    {
+      "id": "CVE-2021-3129",
+      "component": "Laravel",
+      "affected_versions": "< 8.4.3 with Ignition < 2.5.2",
+      "severity": "critical",
+      "description": "Laravel debug mode remote code execution via Ignition debug page.",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2021-3129",
+      "safe_detection_hint": "Check if debug mode is active at /_ignition/health-check or /.ignition.config.php. Do NOT send payloads."
+    },
+    {
+      "id": "CVE-2022-40982",
+      "component": "Django",
+      "affected_versions": "< 3.2.15, < 4.0.7, < 4.1.1",
+      "severity": "high",
+      "description": "Django SQL injection vulnerability in QuerySet.annotate().",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2022-40982",
+      "safe_detection_hint": "Version check only via Django debug pages or headers."
+    }
+  ]
+}

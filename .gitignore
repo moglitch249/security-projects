@@ -18,8 +18,8 @@ env/
 
 # Reports output
 scopehunter_reports/
-*.html
-*.json
+scopehunter_*.html
+scopehunter_*.json
 
 # IDE
 .vscode/
